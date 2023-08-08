@@ -1,11 +1,11 @@
 import  express, { response }  from "express";
-import ProductManager from "./src/manager.js";
+import ProductManager from "./src/ProductManager.js";
 
 const app = express()
 
 const PORT = 8080;
 
-const productManager = new ProductManager("./src/products.json")
+const productManager = new ProductManager("./src/products.js")
 
 const peliculas = await productManager.getProducts()
 
