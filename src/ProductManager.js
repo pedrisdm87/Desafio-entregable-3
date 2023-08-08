@@ -3,15 +3,17 @@ import fs from "fs";
 class ProductManager {
   #path = "./products.js";
   #_products = [];
+  #format = 'utf-8'
 
   constructor() {
     this.#init();
+    this.#format 
   }
 
   async #init() {
     try {
       await fs.access(this.#path);
-      let data = await fs.readFile(this.#path, "utf-8");
+      let data = await fs.readFile(this.#path, this.#format);
       if (!data.trim()) {
         await fs.writeFile(this.#path, JSON.stringify([], null, 2));
         this.#_products = [];
@@ -24,7 +26,7 @@ class ProductManager {
   }
 
   async getProducts() {
-    let data = await fs.promises.readFile(this.#path, "utf-8");
+    let data = await fs.promises.readFile(this.#path, this.#format);
     const products = JSON.parse(data);
     return products;
   }
@@ -34,7 +36,7 @@ class ProductManager {
   }
 
   async getProductById(id) {
-    let data = await fs.promises.readFile(this.#path, "utf-8");
+    let data = await fs.promises.readFile(this.#path, this.#format);
     let products = JSON.parse(data);
     let product = products.find((item) => item.id === id);
     if (!product) return `[ERR] Not found id product`;
@@ -52,7 +54,7 @@ class ProductManager {
     )
       return `[ERR] Required fields missing`;
 
-    let data = await fs.promises.readFile(this.#path, "utf-8");
+    let data = await fs.promises.readFile(this.#path, this.#format);
     let products = JSON.parse(data);
 
     const found = products.find((item) => item.code === code);
@@ -75,7 +77,7 @@ class ProductManager {
   }
 
   async deleteProduct(id) {
-    let data = await fs.promises.readFile(this.#path, "utf-8");
+    let data = await fs.promises.readFile(this.#path, this.#format);
     let products = JSON.parse(data);
     let newProducts = products.filter((item) => item.id !== id);
     if (products.length !== newProducts.length) {
@@ -87,7 +89,7 @@ class ProductManager {
   }
 
   async updateProduct(id, updatedProduct) {
-    let data = await fs.promises.readFile(this.#path, "utf-8");
+    let data = await fs.promises.readFile(this.#path, this.#format);
     let products = JSON.parse(data);
     let newProducts = products.map((item) => {
       if (item.id === id) {
