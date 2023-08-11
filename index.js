@@ -1,4 +1,3 @@
-//const ProductManager = require('./ProductManager')
 import  ProductManager  from './src/ProductManager.js';
 
 const mockProduct = {

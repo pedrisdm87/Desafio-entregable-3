@@ -1,7 +1,6 @@
 import fs from "fs";
-
 class ProductManager {
-  #path = "./src/products.js";
+  #path = "./products.js";
   #_products = [];
   #format = "utf-8";
 
