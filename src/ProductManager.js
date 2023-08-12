@@ -1,6 +1,6 @@
-import fs from "fs";
+import fs from 'fs';
 class ProductManager {
-  #path = "./products.js";
+  #path = './products.js';
   #_products = [];
   #format = "utf-8";
 
@@ -103,10 +103,10 @@ class ProductManager {
 }
 
 // ACA IRIA EL PRODUCTLOADER
-/*
+
 const pm = new ProductManager();
 
-(async () => {
+/*(async () => {
   await pm.addProduct("Oppenheimer", "Biografia", 2500, "Movie1.jpg", 301, 200);
   await pm.addProduct("Barbie", "Infantil", 2500, "Movie2.jpg", 302, 200);
   await pm.addProduct("El Padrino", "Drama", 2500, "Movie3.jpg", 303, 200);
@@ -119,8 +119,9 @@ const pm = new ProductManager();
   await pm.addProduct("El Rey León", "Infantil", 2500, "Movie10.jpg", 310, 200);
   await pm.addProduct("Forrest Gump", "Drama", 2500, "Movie11.jpg", 311, 200);
   await pm.addProduct("Misión Imposible", "Acción", 2500, "Movie12.jpg", 312, 200);
+  })();*/
 
   console.log(await pm.getProducts());
-})(); */
+ 
 
 export default ProductManager;

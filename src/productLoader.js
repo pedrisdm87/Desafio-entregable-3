@@ -1,4 +1,4 @@
-import ProductManager from "./ProductManager.js";
+import ProductManager from './ProductManager.js';
 
 const productLoader = async () => {
   const pm = new ProductManager();
