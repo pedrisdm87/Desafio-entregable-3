@@ -1,7 +1,7 @@
 import ProductManager from './ProductManager.js';
 
 const productLoader = async () => {
-  const pm = new ProductManager();
+  const pm = new ProductManager('./products.json');
 
   await pm.addProduct("Oppenheimer", "Biografia", 2500, "Movie1.jpg", 301, 200);
   await pm.addProduct("Barbie", "Infantil", 2500, "Movie2.jpg", 302, 200);

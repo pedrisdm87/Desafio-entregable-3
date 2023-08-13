@@ -18,7 +18,7 @@ app.get('/', (request, response) => {
 
 // RUTA DE PRODUCTO SEGUN ID CON req.params
 app.get('/products/:pid', (request, response) => {
-    const id = parseInt(request.params.id)
+    const id = parseInt(request.params.pid)
     const productId = peliculas.find(item => item.id == id)
     if (!productId) {
         return response.send({Error: 'La pelicula no fue encontrada'})
@@ -29,11 +29,11 @@ app.get('/products/:pid', (request, response) => {
 
 
 // LIMITADOR CON QUERY PARAMS
-app.get('./src/products', async(request, response) => {
-    const result =await productManager.getProducts()
+app.get('/products', async(request, response) => {
+    const result = await productManager.getProducts()
     const limit = request.query.limit
     if (!limit) {
-        response.send(peliculas)
+        response.send(peliculas )
     } else {
         let prodLimit = peliculas.slice(0,limit)
         response.send(prodLimit) 
