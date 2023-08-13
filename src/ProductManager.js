@@ -13,6 +13,7 @@ class ProductManager {
     try {
       await fs.access(this.#path);
       let data = await fs.readFile(this.#path, this.#format);
+      console.log(data);
       if (!data.trim()) {
         await fs.writeFile(this.#path, JSON.stringify([], null, 2));
         this.#_products = [];
@@ -20,9 +21,13 @@ class ProductManager {
         this.#_products = JSON.parse(data);
       }
     } catch (error) {
-      await fs.promises.writeFile(this.#path, JSON.stringify([], null, 2));
+      if (error.code === 'ENOENT') {
+        await fs.promises.writeFile(this.#path, JSON.stringify([], null, 2));
+        this.#_products = [];
+      }
     }
   }
+  
 
   async getProducts() {
     let data = await fs.promises.readFile(this.#path, this.#format);
