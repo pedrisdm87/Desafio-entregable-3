@@ -10,6 +10,13 @@ const productManager = new ProductManager('./src/products.json')
 const peliculas = await productManager.getProducts()
 
 
+//ROUTERS
+
+app.use(express.json())
+app.use('/api/products', productsRouter);
+app.use('/api/carts', cartsRouter);
+
+
 //RUTA RAIZ "localhost:8080"
 app.get('/', (request, response) => {
     response.send('<h1>Cartelera de Cine</h1>')
