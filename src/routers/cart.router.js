@@ -13,10 +13,13 @@ export class CartManager{
 
     async #init(){
         if(!fs.existsSync(this.#path)){
-            await fs.promises.writeFile(this.#path, JSON.stringify([], null, 2))
+            await fs.promises.writeFile(this.#path, JSON.stringify([], null, 2));}
     }
 
-    #generateID (data)
+    #generateID(data) {
     return (data.length === 0) ? 1 : data[data.length - 1].id +1;
     }
+
+
+
 }
